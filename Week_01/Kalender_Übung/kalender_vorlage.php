@@ -13,9 +13,8 @@
 setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
 $weekday = strftime("%A");
 $dayofmonth = strftime("%e");
-$month = strftime("%B");
+$month = utf8_encode(strftime("%B"));
 $year = strftime("%Y");
-
 ?>
 
 
