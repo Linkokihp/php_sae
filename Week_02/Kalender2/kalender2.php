@@ -10,7 +10,7 @@
 <?php
 
 //Variables
-setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
+// setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
 $weekday = strftime("%A");
 $dayofmonth = strftime("%e");
 $month = utf8_encode(strftime("%B"));
