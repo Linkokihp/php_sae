@@ -125,7 +125,6 @@
 		</section>
 		
 		<!-- footer -->
-		
 	<section class="uk-section-secondary uk-section uk-section-large">
 		<div class="uk-container uk-container-large">
 			<div class="tm-grid-expand uk-grid-large uk-grid-margin-large uk-grid" uk-grid="">
