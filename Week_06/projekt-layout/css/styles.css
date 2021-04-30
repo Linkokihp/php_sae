@@ -1,0 +1,27 @@
+body, html {
+	font-family:Calibri, Verdana, Helvetica, sans-serif;
+}
+ul.navbar-nav {
+    margin: 0 -15px;
+}
+.nav-item { 
+	padding:10px 15px; 
+}
+.nav-link.active {
+	font-weight: 600;
+	color: #fff;
+}
+section.footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+.bg-secondary {
+    background-color: #b1c7db!important;
+}
+.gap {
+    
+    margin-top: 1.5rem!important;
+    margin-bottom: 1.5rem!important;
+}
