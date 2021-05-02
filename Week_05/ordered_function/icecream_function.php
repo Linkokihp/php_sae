@@ -7,7 +7,10 @@ function iceCreamGenerator(){
     $sauce = array('Bratensauce', 'Hollandaise', 'Cocktail', 'Rahmsauce', 'Sweet&Sour');
     
 
-    echo 'Icecream: ' . $icecream[rand(0, 4)] . ' ' . 'Sauce: '. $sauce[rand(0, 4)];
+    echo 'Icecream: ' . $icecream[rand(0, count($icecream)-1)] . ' ' . 'Sauce: '. $sauce[rand(0, count($sauce)-1)]; //Count makes this echo dynamic
+
+    //echo count($icecream);
+    //echo sizeof($icecream);
 };
 
 // Ausgabe beim Click auf den Button
