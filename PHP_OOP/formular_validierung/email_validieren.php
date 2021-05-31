@@ -1,3 +1,18 @@
+<?php
+//Functions
+
+function emailValidator($str){
+	//Desinfection of the input
+	$cleanEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if (filter_var($str, FILTER_VALIDATE_EMAIL)) {
+		return $cleanEmail;
+	} 
+	else {
+		return false;
+	}
+};
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -21,21 +36,34 @@
 <?php
 // Checke, ob der Submit-Button geklickt wurde
 if (isset($_POST['go'])) {
-	// Desinfektion der Eingabe
-	$emailValue = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-	// Ist die E-Mail-Adresse gültig?
-	if (filter_var($emailValue, FILTER_VALIDATE_EMAIL)) {
-		// ja
+	$cleanEmail  = emailValidator($_POST['email']);
+
+	if($cleanEmail) {
 		echo "<div class=\"feedback_positiv\">";
 		echo "Die E-Mail Adresse ist gültig.";
 		echo "</div>\n";
 	}
 	else {
-		// nein
-  		echo "<div class=\"feedback_negativ\">";
+		echo "<div class=\"feedback_negativ\">";
 		echo "Die E-Mail Adresse ist ungültig.";
 		echo "</div>\n";
+		$cleanEmail = '';
 	}
+
+	// Desinfektion der Eingabe
+	// $emailValue = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	// // Ist die E-Mail-Adresse gültig?
+	// if (filter_var($emailValue, FILTER_VALIDATE_EMAIL)) {
+	// 	// ja
+	// 	echo "<div class=\"feedback_positiv\">";
+	// 	echo "Die E-Mail Adresse ist gültig.";
+	// 	echo "</div>\n";
+	// }
+	// else {
+	// 	// nein
+  	// 	echo "<div class=\"feedback_negativ\">";
+	// 	echo "Die E-Mail Adresse ist ungültig.";
+	// 	echo "</div>\n";
 }
 else {
 	$emailValue = "";
@@ -44,7 +72,7 @@ else {
 	<form action="" method="post">
 		<div>
 			<label for="email">E-Mail Adresse</label>
-			<input type="email" id="email" name="email" value="<?=$emailValue?>">
+			<input type="email" id="email" name="email" value="<?=$cleanEmail?>">
 		</div>
 		<button type="submit" name="go">Validate!</button>
 	</form>

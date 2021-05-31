@@ -24,7 +24,7 @@ if (isset($_POST['go'])) {
 	echo "<p>Das Formular wurde verschickt.</p>";
 	echo "<p>PHP kennt jetzt die folgenden Variablen (bzw. Array):</p>";
 	echo "<pre>";
-	print_r($_POST);
+	print_r($_POST); //Zum Entwickeln POST-Variable ausgeben
 	echo "</pre>";
 	echo "</div>\n";
 }
@@ -55,6 +55,9 @@ else {
 			<br>
 			<input type="radio" id="frau" name="anrede" value="Frau">
 			<label for="frau">Frau</label>
+			<br>
+			<input type="radio" id="andere" name="anrede" value="Andere">
+			<label for="andere">Andere</label>
 		</div>
 		<div>
 			<input type="checkbox" id="surfen" name="surfen" value="Surfen">

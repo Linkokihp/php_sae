@@ -1,5 +1,17 @@
 <?php
 // Notiere hier deine Funktion
+	function desinfect($str){
+		//Entferne Leerschläge am Anfang und Schluss der Eingabe
+		$str = trim($str);
+		//Entferne Maskierungszeichen (Hacker)
+		$str = stripslashes($str);
+		//Entferne mit einem PHP Filter die Tags
+		$str = filter_var($str, FILTER_SANITIZE_STRING);
+		//Doppelt gemoppelt
+		$str = strip_tags($str);
+		//Returns the "sanitized" String
+		return $str;
+	};
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -22,10 +34,13 @@ if (isset($_POST['go'])) {
 	echo "<div class=\"feedback_positiv\">";
 	echo "Das Formular wurde verschickt";
 	echo "</div>\n";
+	echo "<pre>";
+	print_r($_POST); //Zum Entwickeln POST-Variable ausgeben
+	echo "</pre>";
 	// Füge hier deine Funktionsaufrufe hinzu
-	$vornameValue = $_POST['vorname'];
-	$nachnameValue = $_POST['nachname'];
-	$bemerkungenValue = $_POST['bemerkungen'];
+	$vornameValue = desinfect($_POST['vorname']);
+	$nachnameValue = desinfect($_POST['nachname']);
+	$bemerkungenValue = desinfect($_POST['bemerkungen']);
 }
 else {
 	// nein, setzte die Variablen leer, damit beim ersten Affenschwanz-Durchgang kein Fehler generiert wird
