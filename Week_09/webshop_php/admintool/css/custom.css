@@ -1,0 +1,4 @@
+.navbar .brand, .uk-logo {
+	font-family:Pacifico;
+}
+.uk-navbar-nav>li>a::before { background-color:#ec0839; }
