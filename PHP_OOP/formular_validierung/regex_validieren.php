@@ -22,7 +22,11 @@ if (isset($_POST['go'])) {
 	- Die erste Ziffer muss ein Zahl von 1 bis 9 sein
 	- Darauf folgen 3 Ziffern mit irgendeiner Zahl
 	*/
-	$suchmuster = '/^[1-9]{1}[0-9]{3}$/';
+
+	//Regex von Jonas Witmer
+	$suchmuster = '/^([1-468][0-9]|[57][0-7]|9[0-6])[0-9]{2}$/';
+	//Regex Beispiel 
+	//'/^[1-9]{1}[0-9]{3}$/';
 	if (preg_match($suchmuster, $plzValue)) {
 		// ja
 		echo "<div class=\"feedback_positiv\">";

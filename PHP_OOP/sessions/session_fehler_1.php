@@ -1,3 +1,6 @@
+<?php
+session_start(); //Session always before HTML
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -5,8 +8,6 @@
 	<title>Der Fehler 1</title>
 </head>
 <body>
-<?php
-session_start();
-?>
+
 </body>
 </html>
