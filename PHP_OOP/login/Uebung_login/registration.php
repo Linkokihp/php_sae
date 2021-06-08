@@ -7,9 +7,9 @@ if(isset($_POST['submit'])){
 		$password = $_POST['password'];
 		
 		$options = array("cost"=>4);
-		$hashPassword = password_hash($password,PASSWORD_BCRYPT,$options);
+		$hashPassword = password_hash($password,PASSWORD_DEFAULT);
 		
-		$sql = "insert into users (first_name, last_name,email, password) value('".$firstName."', '".$surName."', '".$email."','".$hashPassword."')";
+		$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES('".$firstName."', '".$surName."', '".$email."','".$hashPassword."')";
 		$result = mysqli_query($conn, $sql);
 		if($result)
 		{
@@ -18,12 +18,14 @@ if(isset($_POST['submit'])){
 	}
 ?>
 
-<h1>Registration</h1>
+<div class="container">
+	<h1>Registration</h1>
 
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-	<input type="text" name="first_name" value="" placeholder="First Name">
-	<input type="text" name="surname" value="" placeholder="Surname">
-	<input type="text" name="email" value="" placeholder="Email">
-	<input type="password" name="password" value="" placeholder="Password">
-	<button type="submit" name="submit">Submit</submit>
-</form>
+	<form action="registration.php" method="post">
+		<input type="text" name="first_name" value="" placeholder="First Name">
+		<input type="text" name="surname" value="" placeholder="Surname">
+		<input type="text" name="email" value="" placeholder="Email">
+		<input type="password" name="password" value="" placeholder="Password">
+		<button type="submit" name="submit">Submit</submit>
+	</form>
+</div>
