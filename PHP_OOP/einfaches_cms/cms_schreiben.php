@@ -1,10 +1,27 @@
 <?php
+function cleanTags($input) {
+	$allowedTags = '<h1><h2><h3><h4><p><a><span><ul><ol><li>';
+	$cleanStr = strip_tags($input, $allowedTags);
+	return $cleanStr;
+};
+
 // Funktion: Schreiben in ein Textfile
 function writeContent($contentFile) {
-	$handle = fopen($contentFile,"a");
+	$handle = fopen($contentFile,"w");
 	// "a" bedeutet: Nur zum Schreiben geöffnet; platziere Dateizeiger auf Dateiende. Existiert die Datei nicht, versuche, diese zu erzeugen.
-	fwrite($handle,$_POST['content']);
+	fwrite($handle,cleanTags($_POST['content']));
 	fclose($handle);
+}
+
+// Funktion: Lesen eines Textfiles
+function readContent($contentFile) {
+	// Der Content des Textfiles wird mit "file()" in ein Array eingelesen
+	$arr = file($contentFile);
+	$content = "";
+	foreach ($arr as $out) {
+		$content .= $out;
+	}
+	return $content;
 }
 ?>
 <!DOCTYPE html>
@@ -13,6 +30,7 @@ function writeContent($contentFile) {
 	<meta charset="utf-8" />
 	<title>Einfaches CMS: schreiben</title>
 	<link rel="stylesheet" href="../generalstyles.css">
+	<script src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<h2 class="blau">Einfaches CMS: schreiben</h2>
@@ -42,15 +60,25 @@ if (isset($_POST['go'])) {
 	echo "<div class=\"feedback_positiv\">";
 	echo "Habe den Inhalt gespeichert.";
 	echo "</div>\n";
+	$ausgabe = readContent("content.txt");
+}
+else {
+	$ausgabe = readContent("content.txt");
 }
 ?>
 
 	<form action="cms_schreiben.php" method="post">
-		<textarea name="content" id="content" cols="75" rows="15"></textarea><br><br>
+		<textarea name="content" id="content" cols="75" rows="15"><?php echo $ausgabe ?></textarea><br><br>
 		<button type="submit" name="go">Speichern</button>
 	</form>
 	<footer>
 		<a href="../index.html">&lt; Home</a>
 	</footer>
+<script>
+CKEDITOR.replace( 'content', {
+    customConfig: '../ckeditor/myconfig.js',
+	customConfig: '../ckeditor/mystyles.js'
+});
+</script>
 </body>
 </html>

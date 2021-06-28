@@ -12,10 +12,8 @@ if ($result->num_rows > 0) {
         $code .= "Long Description: (html): <br>" . $row["long_desc"]. "<br>";
         $code .= "<hr>";
     }
-}
-
-else {
-    $code .= "No results";
+} else {
+    $code = "No results";
 }
 ?>
 <!DOCTYPE html>
