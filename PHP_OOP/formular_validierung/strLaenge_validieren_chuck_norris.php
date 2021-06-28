@@ -5,9 +5,15 @@ function validateStrLength($str, $field, $min, $max) {
 	global $feedback;
 	global $goon;
 	// Notieren Sie hier ihre Funktion
-	
-	// Mit dieser Variablen zeigen Sie an, ob alles in Ordnung ist. Nur wenn sie auf true gesetzt wird, geht es weiter (s.u.)
-	$goon = false;
+	if(strlen($str) < $min){
+		$feedback = "Das Feld &quot;" . $field . "&quot; muss mehr als " . $min . " Zeichen haben!";
+		// Mit dieser Variablen zeigen Sie an, ob alles in Ordnung ist. Nur wenn sie auf true gesetzt wird, geht es weiter (s.u.)
+		$goon = false;
+	}
+	else if(strlen($str) > $max){
+		$feedback = "Das Feld &quot;" . $field . "&quot; darf maximal " . $max . " Zeichen haben!";
+		$goon = false;	
+	}
 }
 ?>
 <!DOCTYPE html>

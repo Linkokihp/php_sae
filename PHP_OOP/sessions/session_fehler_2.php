@@ -1,7 +1,7 @@
-
 <?php
 // Oberhalb dieses Blocks hat es eine fatale Leerzeile...
 session_start();
+//Keine Leerzeichen vor und nach Sessionstart!
 ?>
 <!DOCTYPE html>
 <html lang="de">

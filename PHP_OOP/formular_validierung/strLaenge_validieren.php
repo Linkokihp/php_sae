@@ -35,7 +35,7 @@ if (isset($_POST['go'])) {
 	}
 }
 else {
-	$nachnameValue = "";
+	$nachnameValue = ""; //Durch setzen eines Wertes beim ersten Durchgang, wird kein Fehler im Feld ausgegebn
 }
 ?>
 	<form action="" method="post">
