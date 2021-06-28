@@ -19,7 +19,7 @@ if( isset($_SESSION['isloggedin'])){
 	// wenn die Session nicht existiert oder der timestamp weiter zurückliegt als die erlaubte laufzeit (= kein Zugriff), soll auf das login umgeleitet werden
 		header('location: login.php');
 		exit;// Tipp: das Script darf im Fall, dass kein Zugriff besteht, nciht weiterlaufen, hierfür sollte exit() oder die() verwendet werden
-	};
+};
 
 
 
