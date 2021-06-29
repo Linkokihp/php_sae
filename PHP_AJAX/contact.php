@@ -15,18 +15,18 @@ if(
     };
 
     // Send Email with 'mail'
-    $name = strip_tags(htmlspecialchars($_POST['name']))
-    $email = strip_tags(htmlspecialchars($_POST['email']))
-    $message = strip_tags(htmlspecialchars($_POST['message']))
+    // $name = strip_tags(htmlspecialchars($_POST['name']))
+    // $email = strip_tags(htmlspecialchars($_POST['email']))
+    // $message = strip_tags(htmlspecialchars($_POST['message']))
 
-    // Create the Email u want to send
-    $to = 'phil.koch@gmx.ch';
-    $email_subject = 'Website contact form ' + $name;
-    $email_body = $message;
-    $headers = 'From: noreply@website.ch\n';
-    $headers .= 'Reply-To: ' . $email;
+    // // Create the Email u want to send
+    // $to = 'phil.koch@gmx.ch';
+    // $email_subject = 'Website contact form ' + $name;
+    // $email_body = $message;
+    // $headers = 'From: noreply@website.ch\n';
+    // $headers .= 'Reply-To: ' . $email;
     
-    mail($to, $email_subject, $email_body, $headers);
+    // mail($to, $email_subject, $email_body, $headers);
 
 
 

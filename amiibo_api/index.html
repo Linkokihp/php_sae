@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiibo API HOME</title>
+    <style>
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .card {
+            background-image: url(https://pngimage.net/wp-content/uploads/2018/05/amiibo-logo-png-6.png);
+            background-size: cover;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: solid black 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100px;
+        }
+
+        .info {
+            align-self: center;
+            font-size: large;
+            color: black;
+            font-size: 25px;
+        }
+
+        button {
+            position: absolute;
+            bottom: 0.5rem;
+            border-radius: 1rem;
+            background-color: #aaa;
+            height: 2rem;
+        }
+
+
+        img {
+            height: 500px;
+            border-radius: 90px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Find your Amiibo - WDD320 - PhilKoch</h1>
+        <h2>This is an Application where u can find all existing Amiibos</h2>
+        <form action="search">
+            <input list="games" id="games">
+            <datalist class="games">
+            </datalist>
+            <input id="search" type="submit" value="send">
+        </form>
+    </header>
+
+    <!-- Container for Amiibogames -->
+    <div class="container"></div>
+
+    <!-- Section for Amiibos -->
+    <section class="amiibos"></section>
+
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
