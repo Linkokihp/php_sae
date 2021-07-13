@@ -2,7 +2,7 @@
 require('class/MyPlayer.class.php');
 $instanz = new MyPlayer();
 // Aufrufen der Methode mit einer Dummy-ID
-$ausgabe = $instanz -> makePlayer("asdh6Rjh");
+$ausgabe = $instanz -> makePlayer("YkI1ogqhbTA",560,315);
 ?>
 <!DOCTYPE html>
 <html lang="de">
