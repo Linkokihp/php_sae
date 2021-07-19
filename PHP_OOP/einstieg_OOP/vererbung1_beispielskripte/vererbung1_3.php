@@ -1,22 +1,22 @@
 <?php
 require("class/Haustier.class.php");
-require("class/Hund.class.php");
+require("class/Vogel.class.php");
 // Instanziiert wird hier nur die Subklasse.
 // Trotzdem stehen darauf die Mitglieder der Superklasse im Objekt zur Verfügung.
-$instanz = new Hund();
+$instanz = new Vogel();
 
 // Eigenschaften schreiben, man beachte:
 // diese gehören zur Instanz der Subklasse, obwohl sie in der Superklasse definiert wurden!!!
 $instanz -> geschlecht = "männlich";
-$instanz -> name = "Waldi";
-$instanz -> art = "Hund";
+$instanz -> name = "Polly";
+$instanz -> art = "Vogel";
 
 // Methode der Superklasse aufrufen, man beachte:
 // diese gehört zur Instanz der Subklasse, obwohl sie in der Superklasse definiert wurde!!!
 $ausgabe1 = $instanz -> WasBinIch();
 
 // Methode der Subklasse aufrufen
-$ausgabe2 = $instanz -> bellen();
+$ausgabe2 = $instanz -> zwitschern();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -25,7 +25,7 @@ $ausgabe2 = $instanz -> bellen();
 	<title>Vererbung Teil 1: Beispiel 1</title>
 </head>
 <body>
-<h2>Die Hund ist ein Haustier, welches bellen kann</h2>
+<h2>Der Vogel ist ein Haustier, welches tschirpen kann</h2>
 <?php
 echo $ausgabe1;
 echo "<br>";

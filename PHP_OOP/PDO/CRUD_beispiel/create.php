@@ -26,6 +26,7 @@ if (isset($_POST['go'])) {
 	$vornameValue = $_POST['vorname'];
 	$nachnameValue = $_POST['nachname'];
 	$emailAdresseValue = $_POST['emailAdresse'];
+	$ortValue = $_POST['ort'];
 	$bemerkungenValue = $_POST['bemerkungen'];
 	
 	$lastID = $myInstance -> createMethod($vornameValue,$nachnameValue,$emailAdresseValue,$bemerkungenValue);
@@ -40,6 +41,7 @@ else {
 	$vornameValue = "";
 	$nachnameValue = "";
 	$emailAdresseValue = "";
+	$ortValue = "";
 	$bemerkungenValue = "";
 }
 ?>
@@ -58,6 +60,11 @@ else {
 		<div>
 			<label for="nachname">E-Mail-Adresse:</label><br>
 			<input type="email" id="emailAdresse" name="emailAdresse" value="<?=$emailAdresseValue?>">
+		</div>
+		<br>
+		<div>
+			<label for="ort">Ort:</label><br>
+			<input type="text" id="ort" name="ort" value="<?=$ortValue?>">
 		</div>
 		<br>
 		<div>

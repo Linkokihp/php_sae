@@ -1,16 +1,31 @@
 <?php
 class MyFirstGallery {
     
-    function makeGallery() {
-        $bilder = Array();
-        $pfad = "bilder";
-        foreach (glob($pfad."/"."*.gif") as $image) {
-            $bilder[] = $image;
+    //Array für Pfade (Eigenschaften)
+    // Muss in BEIDEN Methoden zur Verfügung stehen! So Public!
+    public $bilder = Array();
+
+
+    function __construct($pfad) {
+        //Checke ob das Verzeichnis mit den Bildern existiert
+        if (is_dir($pfad)) {
+            //Falls ja: Befülle das Array mit den Pfaden
+            foreach (glob($pfad."/"."*.gif") as $image) {
+                $this->bilder[] = $image;
+            }
+            sort($this->bilder);
+        } else {
+            //Verzeichnis ist nicht vorhanden, breche das Script ab
+            exit("Can't find directory with images");
         }
-        sort($bilder);
+    }
+
+
+    // Setze den HTML-Code für die Galerie zusammen
+    function makeGallery() {
         $htmlCode = "";
-        foreach ($bilder as $val) {
-            $htmlCode .= "<img src=\"".$val."\">\n";
+        foreach ($this->bilder as $val) {
+            $htmlCode .= "<img src='".$val."'>";
         }
         return $htmlCode;
     }

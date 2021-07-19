@@ -23,14 +23,14 @@ $recordArray = $myInstance -> readMethod();
 // print_r($recordArray);
 ?>
 
-	<? foreach ($recordArray as $row): ?>
+	<?php foreach ($recordArray as $row): ?>
 		<p class="explanation">
 			<?=$row['vorname']?> <strong><?=$row['nachname']?></strong> (ID: <?=$row['ID']?>)<br>
  			<a href="mailto:<?=$row['email']?>"><?=$row['email']?></a>
  		</p>
  		<p class="explanation"><?=nl2br($row['bemerkungen'])?></p>
  		<hr>
- 	<? endforeach; ?>
+ 	<?php endforeach; ?>
 	
 	<footer>
 		<a href="../../index_2.html">&lt; Home</a>

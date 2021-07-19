@@ -31,14 +31,14 @@ $recordArray = $myInstance -> readMethod();
 	
 	<form action="read_erweitert.php" method="post">
 	<table class="explanation bordered">
-	<? foreach ($recordArray as $row): ?>
+	<?php foreach ($recordArray as $row): ?>
 		<tr>
 			<td><?=$row['vorname']?></td>
 			<td><?=$row['nachname']?></td>
 			<td><a href="update.php?id=<?=$row['ID']?>"><strong>U</strong>pdate</a></td>
 			<td><button type="submit" name="go" class="deleter" data-confirm="<?=$row['vorname']?> <?=$row['nachname']?>" value="<?=$row['ID']?>"><strong>D</strong>elete</button></td>
 		</tr>
-	<? endforeach; ?>
+	<?php endforeach; ?>
 	</table>
 	</form>
 	<footer>

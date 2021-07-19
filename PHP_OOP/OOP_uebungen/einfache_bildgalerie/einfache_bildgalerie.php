@@ -1,8 +1,6 @@
 <?php
 require('class/bildergalerie.class.php');
-
-$instanz = new MyFirstGallery();
-
+$instanz = new MyFirstGallery("bilder");
 $ausgabe = $instanz -> makeGallery();
 ?>
 <!DOCTYPE html>

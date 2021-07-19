@@ -5,7 +5,7 @@ class SimpleCRUD extends PDO {
 	// Eigenschaften für die obligaten DB-Angaben (= sog. DB-Credentials)
 	// hier macht es Sinn, diese mit "private" zu kennzeichen
 	private $host = "localhost";
-	private $user = "";
+	private $user = "root";
 	private $passwd = "";
 	private $dbname = "kungfu";
 	
@@ -30,12 +30,13 @@ class SimpleCRUD extends PDO {
 		}
 	}
 	
-	public function createMethod($vornameInput, $nachnameInput, $emailInput, $bemerkungenInput) {
-		$query = "INSERT INTO CRUD (vorname, nachname, email, bemerkungen) VALUES (:vorname, :nachname, :email, :bemerkungen)";
+	public function createMethod($vornameInput, $nachnameInput, $emailInput, $ortInput, $bemerkungenInput) {
+		$query = "INSERT INTO CRUD (vorname, nachname, email, ort, bemerkungen) VALUES (:vorname, :nachname, :email, :ort, :bemerkungen)";
 		$stmt = $this -> prepare($query);
 		$stmt -> bindParam(':vorname', $vornameInput);
 		$stmt -> bindParam(':nachname', $nachnameInput);
 		$stmt -> bindParam(':email', $emailInput);
+		$stmt -> bindParam(':ort', $ortInput);
 		$stmt -> bindParam(':bemerkungen', $bemerkungenInput);
 		$stmt -> execute();
 		// Das funktioniert nur mit MySQL-Datenbanken!
@@ -59,7 +60,7 @@ class SimpleCRUD extends PDO {
 		return $result;
 	}
 	
-	public function updateMethod($idInput, $vornameInput, $nachnameInput, $emailInput, $bemerkungenInput) {
+	public function updateMethod($idInput, $vornameInput, $nachnameInput, $emailInput, $ortInput, $bemerkungenInput) {
 		$query = "UPDATE CRUD SET ";
 		$query .= "vorname = :vorname, ";
 		$query .= "nachname = :nachname, ";
@@ -71,6 +72,7 @@ class SimpleCRUD extends PDO {
 		$stmt -> bindParam(':vorname', $vornameInput);
 		$stmt -> bindParam(':nachname', $nachnameInput);
 		$stmt -> bindParam(':email', $emailInput);
+		$stmt -> bindParam(':ort', $ortInput);
 		$stmt -> bindParam(':bemerkungen', $bemerkungenInput);
 		$stmt -> execute();
 	}

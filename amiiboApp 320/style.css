@@ -1,0 +1,140 @@
+/* === Small CSS Reset === */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+*, *::after, *::before{
+  box-sizing: border-box;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(20, 20, 20);
+}
+/* === Font === */
+
+h1, h2, li, p, h3, h4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2, p, h3, h4 {
+  color: #ff4532;
+}
+/* === Header === */
+
+header{
+  margin: 3em 0;
+  text-align: center;
+}
+
+/* === Pagination === */
+
+.pagi{
+  margin: 0 auto;
+  text-align: center;
+}
+.pagi span{
+  display: inline-block;
+  background-color: #5CDB95;
+  padding: 5px;
+  margin: 10px 0 20px 0;
+  font-size: 2em;
+  font-family: monospace;
+}
+.pagi .leftarr, .pagi .rightarr{
+  background-color: #ff4532;
+}
+.pagi .leftarr:hover, .pagi .rightarr:hover{
+  cursor: pointer;
+  background-color: brown;
+}
+
+/* === App === */
+
+ul.gameseries{
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  width: 90%;
+}
+
+.gameseries li{
+  padding: 10px;
+  list-style: none;
+  background-color: #ff4532;
+}
+
+.gameseries li:nth-child(odd){
+  background-color:#5CDB95;
+}
+
+.gameseries li:hover{
+  background-color: rgb(71, 250, 71);
+  cursor: pointer;
+}
+
+article{
+  display: flex;
+  justify-content: center;
+}
+
+figure{
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+figure figcaption{
+  /* width: 45%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figure img{
+  max-height:60vh;
+  min-height: 300px;
+}
+
+figure figcaption h3{
+  font-size: 2rem;
+}
+
+figure figcaption h4{
+  font-size: 1.2rem;
+}
+
+figure figcaption ul{
+  list-style: none;
+}
+
+figure figcaption li{
+  padding-bottom: 25px;
+  color:#5CDB95;
+}
+
+figure figcaption .releases li{
+  padding: 5px 0;
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+
+
+  header{
+    margin: 1em 2em;
+  }
+
+  figure{
+    /* width: 45%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+}
