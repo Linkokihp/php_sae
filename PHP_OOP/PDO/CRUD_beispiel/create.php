@@ -1,4 +1,5 @@
 <?php
+require('prefs/credentials.php');
 require('class/SimpleCRUD.class.php');
 $myInstance = new SimpleCRUD();
 ?>
@@ -29,7 +30,7 @@ if (isset($_POST['go'])) {
 	$ortValue = $_POST['ort'];
 	$bemerkungenValue = $_POST['bemerkungen'];
 	
-	$lastID = $myInstance -> createMethod($vornameValue,$nachnameValue,$emailAdresseValue,$bemerkungenValue);
+	$lastID = $myInstance -> createMethod($vornameValue,$nachnameValue,$emailAdresseValue, $ortValue, $bemerkungenValue);
 	
 	echo "<div class=\"feedback_positiv\">";
 	echo "Der Datensatz wurde aufgenommen. Die ID des eingefügten Datensatzes ist ".$lastID;

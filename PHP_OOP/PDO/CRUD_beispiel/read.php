@@ -1,4 +1,5 @@
 <?php
+require('prefs/credentials.php');
 require('class/SimpleCRUD.class.php');
 $myInstance = new SimpleCRUD();
 $recordArray = $myInstance -> readMethod();
@@ -28,6 +29,7 @@ $recordArray = $myInstance -> readMethod();
 			<?=$row['vorname']?> <strong><?=$row['nachname']?></strong> (ID: <?=$row['ID']?>)<br>
  			<a href="mailto:<?=$row['email']?>"><?=$row['email']?></a>
  		</p>
+		<p class="explanation"><?=nl2br($row['ort'])?></p>
  		<p class="explanation"><?=nl2br($row['bemerkungen'])?></p>
  		<hr>
  	<?php endforeach; ?>

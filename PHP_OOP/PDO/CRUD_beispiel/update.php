@@ -1,4 +1,5 @@
 <?php
+require('prefs/credentials.php');
 require('class/SimpleCRUD.class.php');
 $myInstance = new SimpleCRUD();
 ?>
@@ -53,6 +54,7 @@ else {
 	$vornameValue = $recordArray['vorname'];
 	$nachnameValue = $recordArray['nachname'];
 	$emailAdresseValue = $recordArray['email'];
+	$ortValue = $recordArray['ort'];
 	$bemerkungenValue = $recordArray['bemerkungen'];
 	$idValue = $cleanID;
 }
@@ -74,6 +76,10 @@ else {
 			<input type="email" id="emailAdresse" name="emailAdresse" value="<?=$emailAdresseValue?>">
 		</div>
 		<br>
+		<div>
+			<label for="ort">Ort:</label><br>
+			<input type="text" id="ort" name="ort" value="<?=$ortValue?>">
+		</div>
 		<div>
 			<label for="bemerkungen">Bemerkungen:</label><br>
 			<textarea id="bemerkungen" name="bemerkungen" cols="50" rows="6"><?=$bemerkungenValue?></textarea>

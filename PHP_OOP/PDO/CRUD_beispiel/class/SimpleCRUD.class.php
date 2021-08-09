@@ -2,13 +2,6 @@
 // Die Klasse erbt von der Superklasse PDO
 class SimpleCRUD extends PDO {
 
-	// Eigenschaften für die obligaten DB-Angaben (= sog. DB-Credentials)
-	// hier macht es Sinn, diese mit "private" zu kennzeichen
-	private $host = "localhost";
-	private $user = "root";
-	private $passwd = "";
-	private $dbname = "kungfu";
-	
 	// Konstruktormethode: Stelle die Verbindung zur DB her
     public function __construct() {
     	$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname .';charset=utf8';
@@ -65,6 +58,7 @@ class SimpleCRUD extends PDO {
 		$query .= "vorname = :vorname, ";
 		$query .= "nachname = :nachname, ";
 		$query .= "email = :email, ";
+		$query .= "ort = :ort ";
 		$query .= "bemerkungen = :bemerkungen ";
 		$query .= "WHERE ID = :ID ";
 		$stmt = $this -> prepare($query);

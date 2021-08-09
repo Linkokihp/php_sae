@@ -10,11 +10,12 @@ if (isset($_POST['go'])) {
 		Was soll validiert werden (mehrere Werte abgetrennt mit |)?
 		String für die Ausgabe des Feedbacks
 	*/
-	$vornameValue = $instanz -> validateElement($_POST['vorname'],true,"Vorname","min_length-3|max_length-6","Die Eingabe muss zwischen 3 und 6 Zeichen sein.");
-	$nachnameValue =  $instanz -> validateElement($_POST['nachname'],true,"Nachname","min_length-3|max_length-6","Die Eingabe muss zwischen 3 und 6 Zeichen sein.");
+	$vornameValue = $instanz -> validateElement($_POST['vorname'],true,"Vorname","min_length-3|max_length-10","Die Eingabe muss zwischen 3 und 10 Zeichen sein.");
+	$nachnameValue =  $instanz -> validateElement($_POST['nachname'],true,"Nachname","min_length-3|max_length-10","Die Eingabe muss zwischen 3 und 10 Zeichen sein.");
 	$strasseValue = $instanz -> validateElement($_POST['strasse'],false,"Strasse","min_length-3","Die Eingabe muss mindestens 3 Zeichen sein.");
 	$emailValue =  $instanz -> validateElement($_POST['email'],true,"E-Mail Adresse","email","ist keine gültige E-Mail Adresse");
 	$plzValue =  $instanz -> validateElement($_POST['plz'],true,"PLZ","plz","Ist keine gültige Postleitzahl");
+	$ortValue =  $instanz -> validateElement($_POST['ort'],true,"Ort","min_length-3|max_length-10","Die Eingabe muss zwischen 3 und 10 Zeichen sein.");
 	if ($instanz -> validationState) {
 		// ja
 		$ausgabe = "<div class=\"feedback_positiv\">";
@@ -37,6 +38,7 @@ else {
 	$nachnameValue = "";
 	$emailValue = "";
 	$plzValue = "";
+	$ortValue = "";
 }
 ?>
 <!DOCTYPE html>
@@ -78,6 +80,10 @@ echo $ausgabe;
 		<div>
 		<label for="plz">PLZ*</label>
 			<input type="text" id="plz" name="plz" value="<?=$plzValue?>">
+		</div>
+		<div>
+		<label for="ort">ORT*</label>
+			<input type="text" id="ort" name="ort" value="<?=$ortValue?>">
 		</div>
 		<button type="submit" name="go">Validate!</button>
 	</form>

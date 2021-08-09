@@ -16,6 +16,7 @@ CREATE TABLE `CRUD` (
   `vorname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `nachname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ort` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `bemerkungen` varchar(1500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

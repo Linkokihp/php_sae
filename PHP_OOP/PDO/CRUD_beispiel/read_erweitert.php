@@ -1,4 +1,5 @@
 <?php
+require('prefs/credentials.php');
 require('class/SimpleCRUD.class.php');
 $myInstance = new SimpleCRUD();
 if (isset($_POST['go'])) {
@@ -35,6 +36,7 @@ $recordArray = $myInstance -> readMethod();
 		<tr>
 			<td><?=$row['vorname']?></td>
 			<td><?=$row['nachname']?></td>
+			<td><?=$row['ort']?></td>
 			<td><a href="update.php?id=<?=$row['ID']?>"><strong>U</strong>pdate</a></td>
 			<td><button type="submit" name="go" class="deleter" data-confirm="<?=$row['vorname']?> <?=$row['nachname']?>" value="<?=$row['ID']?>"><strong>D</strong>elete</button></td>
 		</tr>
