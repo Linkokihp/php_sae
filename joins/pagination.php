@@ -7,7 +7,7 @@ $result = $dbh->query($countQuery);
 $total = $result->fetchColumn();
 
 // Wie viele Datensätze möchte ich "pro Seite" anzeigen?
-$numHits = 30;
+$numHits = 20;
 
 // Ab welcher Grenze soll die Pagination (3. Variante) angezeigt werden?
 $showFullPagination = 6;
