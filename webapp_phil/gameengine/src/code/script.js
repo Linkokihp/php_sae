@@ -72,10 +72,10 @@ const keys = {
    40: directions.down,
 
    // WASD Keys
-   87: directions.up,
-   65: directions.left,
-   68: directions.right,
-   83: directions.down,
+   // 87: directions.up,
+   // 65: directions.left,
+   // 68: directions.right,
+   // 83: directions.down,
 }
 document.addEventListener("keydown", (e) => {
    var dir = keys[e.which];
@@ -146,3 +146,49 @@ const step = () => {
    })
 }
 step(); //kick off the first step!
+
+
+//CHATFUNCTION--------------------------------------
+
+$(function(){
+  
+   //To send a Message to DB + Display MSG
+   $(".chatText").keyup(function(e){
+
+      //When enter get s pressed do:
+      if(e.keyCode == 13){
+         e.preventDefault();
+         let chatText = $('.chatText').val();
+         
+         $.ajax({
+            type:'POST',
+            url:'../insert_messages.php',
+            data:{chatText:chatText},
+            success: function(){
+               $('.chatMessages').load('../display_messages.php')
+               $('.chatText').val('')
+               
+               //Deletes Chatbubble after 5s
+               setTimeout(function(){
+                  $('.chatMessages').load('../delete_messages.php')
+               }, 5000);
+            }
+         });
+      }
+   });
+
+   //When spacebar get s pressed add space 
+   $(".chatText").keydown(function(e){
+
+      if(e.keyCode == 32){
+         $('.chatText').val($('.chatText').val()+' ')
+      }
+   });
+
+   //Interval function to Display ChatMessage
+   setInterval(function(){
+      $('.chatMessages').load('../display_messages.php')
+   },500);
+
+   $('.chatMessages').load('../display_messages.php')
+});

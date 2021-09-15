@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8" />
+	<title>Anleitung Mac</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="container">
+	<p><a href="index.html">Zur Übersicht</a></p>
+	<br>
+	
+	<h1>Anleitung Mac</h1>
+	<p>Auf dem Mac ist PHP höchstwahrscheinlich schon installiert, allerdings nicht in der aktuellsten Version<p>
+
+	<h2>1. Checken, welche Version von PHP vorhanden ist:</h2>
+	<p><code>php -v</code> oder <code>php –version</code></p>
+	
+	<p><img src="img/Terminal_Version_php.png" width="586" height="150" alt="Terminal_Version_php"></p>
+
+	<h2>2. Composer braucht PHP 5.3.2+</h2>
+	<p>Falls du eine noch ältere Version hast (<strong>was jedoch höchst unwahrscheinlich ist</strong>):<br>
+	Installiere zuerst &quot;homebrew&quot;, Anleitung:<br>
+	<a href="https://brew.sh/">brew.sh/</a></p>
+
+	<p><code>brew search php</code><br>
+	Listet dir alle Versionen von PHP auf, die zur Verfügung stehen, darauf kannst du dir eine Version installieren, zum Beispiel die Version 7.3:<br>
+	<code>brew update</code><br>
+	<code>brew install php@7.3</code></p>
+
+	<h2>3. Anleitung</h2>
+	
+	<p>a. <strong>Blende die &quot;Invisibles&quot; ein</strong>, so wie wir das beim Thema &quot;.htaccess&quot; gemacht haben.</p>
+	
+	<p>b. Checke ob, das Verzeichnis <strong>/usr/local/bin</strong> auf deinem Mac existiert. Falls nicht, musst du es anlegen!</p>
+	
+	<p><img src="img/bin_verzeichnis_anlegen.png" width="810" height="368" alt="bin_verzeichnis_anlegen"></p>
+	<br>
+	<p>c. Besuche die Seite <a href="https://www.laravel-seminar.de/composer-installieren-unter-mac-os/" target="_blank">www.laravel-seminar.de/composer-installieren-unter-mac-os/</a><br>
+und mache alle Schritte durch<br>
+<strong>Hinweis:</strong> im Editor &quot;Nano&quot; bedeutet ^ = ctrl-Taste</p>
+
+	<p>Der letzte Schritt <cite>Das erneute Laden ist künftig nicht mehr notwendig. Die Datei wird automatisch geladen bevor wir ein neues Terminal Fenster öffnen!</cite> ist allenfalls, je nach Betriebssystem, nicht erfolgreich. Die Entwickler von Apple geben alles, um dein Leben schwer zu machen ...<br>
+	Somit musst du leider jedes Mal, wenn du Composer verwenden möchtest, den Befehl<br>
+	<code>source ~/.bash_profile</code><br>
+	eingeben, um mit Composer zu arbeiten</p>
+	<br>
+</div>
+</body>
+</html>

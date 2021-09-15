@@ -2,7 +2,13 @@
     --pixel-size: 2px;
     --grid-cell: calc( var(--pixel-size) * 16);
     --bg: #292929;
+    --Speech-Bubble-Border:#222;
+    --Speech-Bubble-Background:#fcfcfc;
+    --Speech-Bubble-Text:#000;
  }
+
+ @font-face {font-family:"silkscreen"; src: url('https://dl.dropbox.com/s/l0frac4d7bz3zx6/silkscreen.ttf');}
+
  @media( min-width: 700px ) {
     :root {
        --pixel-size: 3px;
@@ -32,6 +38,20 @@
  
  .pixel-art {
     image-rendering: pixelated;
+ }
+
+ .welcome_msg {
+    position: absolute;
+    z-index: 999;
+    color: white;
+    top: 5px;
+ }
+
+ .logout {
+   position: absolute;
+   right: 100px;
+   top: 30px;
+   font-size: 20px;
  }
  
  .frame {
@@ -64,18 +84,18 @@
  .username {
     overflow:hidden;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: 15px;
-    color: red;
-    font-size: 25px;
- }
+    bottom: 5px;
+    left: 5px;
+    color: red;   
+    font-size: 15px;
+    z-index: 999;
+}
  
  .character {
     width: calc( var(--grid-cell)* 2 );
     height: calc( var(--grid-cell)* 2 );
     position: absolute;
-    overflow:hidden;
+    overflow: hidden;
  }
  
  .shadow {
@@ -117,6 +137,83 @@
      transform: translate3d(-100%,0%,0);
    }
  }
+
+ #speech-bubble {
+	width:calc(100% - 24px);
+   position: absolute;
+   right: 5px;
+}
+
+#bub-part-a {
+	margin-left:6px;
+	width:calc(100% - 12px);
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+
+#speech-txt {
+	width:calc(100% - 24px);
+	padding:6px;
+	font-family:silkscreen;
+	font-size:10px;
+	color:var(--Speech-Bubble-Text);
+	background:var(--Speech-Bubble-Background);
+	border-left:3px solid var(--Speech-Bubble-Border);
+	border-right:3px solid var(--Speech-Bubble-Border);
+}
+
+#speech-arrow {
+	margin-top:-2px;
+	margin-left:60px;
+}
+
+#arrow-w {
+	width:8px;
+	height:8px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-x {
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-y {
+	margin-left:-2px;
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-z {
+	margin-left:-2px;
+	width:8px;
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+
+ .chatText {
+   position: absolute;
+   width: 300px;
+   z-index: 1000;
+   bottom: 15px;
+   left: 50%;
+   transform: translate(-50%, 0);
+   resize: none;
+   box-shadow: 5px 5px 5px black;
+   font-size: 15px;
+   -webkit-transform: translate(-50%, 0);
+   -moz-transform: translate(-50%, 0);
+   -ms-transform: translate(-50%, 0);
+   -o-transform: translate(-50%, 0);
+}
  
  .dpad {
     position:absolute;

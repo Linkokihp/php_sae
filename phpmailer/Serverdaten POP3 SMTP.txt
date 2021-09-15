@@ -1,0 +1,3 @@
+Server:		pop.gmx.net			                mail.gmx.net
+Port:		995				                    587
+Verschlüsselug	SSL oder Verschlüsselung	    STARTTLS, TLS oder Verschlüsselung

@@ -1,0 +1,29 @@
+Anleitung für den Mac
+
+Auf dem Mac ist PHP höchstwahrscheinlich schon installiert, allerdings in einer alten Version
+
+1. Checken, welche Version von PHP vorhanden ist:
+
+php -v oder php –version
+
+2. Composer braucht PHP 5.3.2+
+Falls du eine noch ältere Version hast (was jedoch ziemlich unwahrscheinlich ist):
+Installiere zuerst "homebrew", Anleitung:
+https://brew.sh/
+
+brew search php
+Listet dir alle Versionen von PHP auf, die zur Verfügung stehen
+darauf kannst du dir eine Version installieren
+zum Beispiel die Version 7.3
+
+brew update
+brew install php@7.3
+
+2. Besuche die Seite https://www.laravel-seminar.de/composer-installieren-unter-mac-os/
+und mache alle Schritte durch
+im Editor Nano bedeutet ^ = ctrl-Taste
+
+
+
+
+

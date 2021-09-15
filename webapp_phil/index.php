@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php require_once('config.php') ?>
+<?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
     <title>Welcome to Ninjatt</title>
 </head>
+<?php
+	if (isset($_SESSION['logoutmessage'])) {
+		echo '<script type="text/javascript">alert("' . $_SESSION['logoutmessage'] . '");</script>';
+		unset($_SESSION['logoutmessage']);
+	}
+?>
 <body>
     <div id=LoginDiv></div>
         <form id="form1" method="post" action="user_login.php">
@@ -24,11 +26,13 @@
                     if(isset($_GET['error'])) {
                 ?>
                 <tr>
-                    <td><span style="color: red;">Wong credentials!</span></td>
+                    <td><span style="color: red;">Wong credentials! Try again!</span></td>
                 </tr>
                 <?php   
                     }
                 ?>
+            </table>
+            <h4><a href="sign_up.php">Not a Ninjatter yet? Sign up!</a></h4>
         </form>
 </body>
 </html>

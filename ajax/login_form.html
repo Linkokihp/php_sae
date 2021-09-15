@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8" />
+	<title>fourth step</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="container">
+	<p><a href="index.html">Zur Übersicht</a></p>
+	<br>
+	<h1>Vierter Schritt mit Ajax - fetch() und PDO</h1>
+	<h2>Benutzernamen überprüfen</h2>
+	<p>Testuser in Tabelle &quot;login&quot; (von Übung &quot;Login mit PDO&quot;):<br>
+	<strong>heiri89</strong> und <strong>carla34</strong></p>
+ 	<form method="post" action="login_form.html">
+ 		<div>
+    		<label for="userName">Username:</label>
+       		<input type="text" id="username" name="username">
+       	</div>
+    </form>
+    <label>Resultat der Auswertung:</label>
+	<div id="ausgabediv"></div>
+</div>
+<script>
+let ausgabe = document.getElementById("ausgabediv");
+userNameField = document.getElementById("username");
+userNameField.addEventListener('blur', (event) => {
+	var formData = new FormData();
+	formData.append('user', userNameField.value);
+	fetch('php/checklogin.php', {
+  		method: "post",
+  		body: formData,
+	})
+  	.then((res) => res.json())
+  	.then(function(data) {
+  		console.log(data);
+  		if (data) {
+  			ausgabe.innerHTML = "Hallo User!";
+  			userNameField.style.backgroundColor = "transparent";
+  		}
+  		else {
+  			ausgabe.innerHTML = "Dieser Username existiert nicht.";
+  			userNameField.style.backgroundColor = "lightsalmon";
+  		}
+  	}
+  	)
+  	.catch((error) => console.log(error))
+})
+</script>
+</body>
+</html>

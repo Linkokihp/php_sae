@@ -1,27 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+    session_start();
+?>
+<?php require_once('../config.php') ?>
+<?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
     <link rel="stylesheet" href="src/style/style.css">
-    <title>WEBAPP-Phil</title>
+    <title>Welcome to Ninjatt</title>
 </head>
+<?php
+  $session_laufzeit = 5*60;
+  $localtime = time();
+
+  if( isset($_SESSION['isloggedin'])){
+    if($_SESSION['isloggedin'] != true || ($_SESSION['login_timestamp'] + $session_laufzeit) < $localtime) {
+      $_SESSION['logoutmessage'] = "Your session has been expired! Please login again!";
+      header('location: ../index.php');
+      exit;
+    };
+  }	else{
+    $_SESSION['logoutmessage'] = "Your session has been expired! Please login again!";
+      header('location: ../index.php');
+      exit;
+  };
+?>
 <body>
+
+    <!-- Us as a Welcomemessage later -->
+    <div class='welcome_msg'><h2>Welcome <span><?php echo $_SESSION['UserName']?></span> to Phil's Ninjatt</h2></div>
+    <a class="logout" href="<?php echo BASE_URL . '/logout.php'; ?>" class="btn btn-flat">Sign out</a>
+
+    <!-- INFRAME STUFF -->
     <div class="frame">
         <div class="corner_topleft"></div>
         <div class="corner_topright"></div>
         <div class="corner_bottomleft"></div>
-        <div class="corner_bottomright"></div>
+        <div class="corner_bottomright"></div>    
         
+        <p class="headline" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 75 14" shape-rendering="crispEdges">Ninjatt</p>
+
+        <textarea name="chatText" class="chatText" maxlength="30" rows="2" cols="80" placeholder="Reach out to the Ninjatters..."></textarea>
         
         <div class="camera">
             <div class="map pixel-art">
                 <div class="character" facing="down" walking="true">
-                    <!----------------------------------- OUT OF DB LATER ----------------------------------->
-                    <div class="username">Phil</div>
+                    <div class="username"><?php echo $_SESSION['UserName'];?></span></div>
                     <div class="shadow pixel-art"></div>
+                    <!----------------------------------- OUT OF DB LATER ----------------------------------->
                     <div class="character_spritesheet pixel-art"></div>
+                    <!-- start speech bubble -->
+                    <div class="chatMessages"></div>
+                    <!--end speech bubble-->
                 </div>
             </div>
 
@@ -74,12 +101,6 @@
                     </button>
                 </div>
             </div>
-            
-            
-            <p class="headline" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 75 14" shape-rendering="crispEdges">
-                Ninjatt
-            </p>
-            
         </div>
     </div>
 <script src="src/code/script.js"></script>

@@ -20,9 +20,6 @@
                 <tr>
                     <td><input type="password" name="UserPassword" placeholder="Enter your Password" required></td>
                 </tr>
-                <!-- <tr>
-                    <td> List of Ninjachars </td>
-                </tr> -->
                 <tr>
                     <td><input type="submit" value="SignUp"></td>
                 </tr>
@@ -36,6 +33,7 @@
                     }
                 ?>
             </table>
+            <h4><a href="index.php">I'm already a Ninjatter!</a></h4>
         </form>
     </div>
 </body>
