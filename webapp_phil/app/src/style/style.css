@@ -1,0 +1,312 @@
+:root {
+    --pixel-size: 2px;
+    --grid-cell: calc( var(--pixel-size) * 16);
+    --bg: #292929;
+    --Speech-Bubble-Border:#222;
+    --Speech-Bubble-Background:#fcfcfc;
+    --Speech-Bubble-Text:#000;
+    --animate-delay: 0.5s;
+    
+ }
+
+ @font-face {font-family:"silkscreen"; src: url('https://dl.dropbox.com/s/l0frac4d7bz3zx6/silkscreen.ttf');}
+
+ @media( min-width: 700px ) {
+    :root {
+       --pixel-size: 3px;
+    }
+ }
+ @media( min-width: 1000px ) {
+    :root {
+       --pixel-size: 4px;
+    }
+ }
+ /* @media( min-width: 1000px ) {
+    :root {
+       --pixel-size: 5px;
+    }
+ } */
+ 
+ html, body {
+    height: 100%;
+ }
+ 
+ body {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ 
+ .pixel-art {
+    image-rendering: pixelated;
+ }
+
+ .welcome_msg {
+    position: absolute;
+    z-index: 999;
+    color: white;
+    top: 5px;
+ }
+
+ .logout {
+   position: absolute;
+   right: 100px;
+   top: 30px;
+   font-size: 20px;
+ }
+
+ .onlineState {
+   position: absolute;
+   left: 100px;
+   top: 80px;
+   font-size: 20px;
+   color: white;
+ }
+ 
+ .frame {
+    /* This is just for Pen decoration */
+    width: calc(var(--pixel-size) * 208);
+    height: calc(var(--pixel-size) * 150);
+    outline: var(--pixel-size) solid #fff;
+    z-index:1;
+    position:relative;
+ }
+ 
+ .camera {
+    width: calc(var(--pixel-size) * 208);
+    height: calc(var(--pixel-size) * 150);
+    overflow: hidden;
+    background: #61ddf7;
+    position:relative;
+ }
+ 
+ .map {
+    image-rendering: pixelated;
+    /* background-image: url("https://assets.codepen.io/21542/CameraDemoMap.png"); */
+    background: grey;
+    background-size: 100%;
+    width: calc(13 * var(--grid-cell));
+    height: calc(10 * var(--grid-cell));
+    position: relative;
+ }
+
+ .username {
+    overflow:hidden;
+    position: absolute;
+    bottom: 2px;
+    left: 5px;
+    color: red;   
+    font-size: 15px;
+    z-index: 999;
+}
+ 
+ .character {
+    width: calc( var(--grid-cell)* 2 );
+    height: calc( var(--grid-cell)* 2 );
+    position: absolute;
+    overflow: hidden;
+ }
+ 
+ .shadow {
+    width: calc( var(--grid-cell)* 2 );
+    height: calc( var(--grid-cell)* 2 );
+    position: absolute;
+    left:0;
+    top:0;
+    background: url("https://assets.codepen.io/21542/DemoRpgCharacterShadow.png") no-repeat no-repeat;
+    background-size: 100%;
+ }
+ 
+ .character_spritesheet {
+    position: absolute;
+    /* background: url("../chars/DemoRpgCharacter.png") no-repeat no-repeat; */
+    background-repeat: no-repeat no-repeat;
+    background-size: 100%;
+    width: calc( var(--grid-cell)* 8 );
+    height: calc( var(--grid-cell)* 8 );
+ }
+ 
+ .character[facing="right"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -32 );
+ }
+ .character[facing="up"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -64 );
+ }
+ .character[facing="left"] .character_spritesheet {
+    background-position-y: calc( var(--pixel-size) * -96 );
+ }
+ .character[walking="true"] .character_spritesheet {
+    animation: walkAnimation 0.6s steps(4) infinite; 
+ }
+ 
+ @keyframes walkAnimation {
+   from {
+     transform: translate3d(0%,0%,0);
+   }
+   to {
+     transform: translate3d(-100%,0%,0);
+   }
+ }
+
+ #speech-bubble {
+	width:calc(100% - 24px);
+   position: absolute;
+   right: 5px;
+}
+
+#bub-part-a {
+	margin-left:6px;
+	width:calc(100% - 12px);
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+
+#speech-txt {
+	width:calc(100% - 24px);
+	padding:6px;
+	font-family:silkscreen;
+	font-size:10px;
+	color:var(--Speech-Bubble-Text);
+	background:var(--Speech-Bubble-Background);
+	border-left:3px solid var(--Speech-Bubble-Border);
+	border-right:3px solid var(--Speech-Bubble-Border);
+}
+
+#speech-arrow {
+	margin-top:-2px;
+	margin-left:60px;
+}
+
+#arrow-w {
+	width:8px;
+	height:8px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-x {
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-y {
+	margin-left:-2px;
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-z {
+	margin-left:-2px;
+	width:8px;
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+
+ .chatText {
+   position: absolute;
+   width: 300px;
+   z-index: 1000;
+   bottom: 15px;
+   left: 50%;
+   transform: translate(-50%, 0);
+   resize: none;
+   box-shadow: 5px 5px 5px black;
+   font-size: 15px;
+   -webkit-transform: translate(-50%, 0);
+   -moz-transform: translate(-50%, 0);
+   -ms-transform: translate(-50%, 0);
+   -o-transform: translate(-50%, 0);
+}
+ 
+ .dpad {
+    position:absolute;
+    right: calc(var(--pixel-size) * 2);
+    bottom: -43px;
+    width: calc(var(--pixel-size) * 37);
+    height: calc(var(--pixel-size) * 38);
+ }
+ .dpad-button {
+    appearance:none;
+    outline:0;
+    border:0;
+    background:transparent;
+    padding:0;
+    cursor:pointer;
+ }
+ .dpad-button svg {
+    display:block;
+    height: calc(var(--pixel-size) * 13);
+ }
+ 
+ .dpad-button.pressed .Arrow_arrow-inset { stroke:#07c2cc; }
+ .dpad-button.pressed .Arrow_arrow-body { stroke:#17dfea; }
+ 
+ .dpad-up {
+    position: absolute;
+    left: calc(var(--pixel-size) * 12);
+    top:0;
+ }
+ .dpad-down {
+    position: absolute;
+    bottom:52px;
+    left: calc(var(--pixel-size) * 12);
+ }
+ .dpad-left {
+    position: absolute;
+    top: calc(var(--pixel-size) * 12);
+    left:0;
+ }
+ .dpad-right {
+    position: absolute;
+    top: calc(var(--pixel-size) * 12);
+    right:0;
+ }
+ 
+ .dpad {
+    user-select:none;
+ }
+ 
+ 
+ .corner_topleft,
+ .corner_topright,
+ .corner_bottomleft,
+ .corner_bottomright {
+    position: absolute;
+    width: var(--pixel-size);
+    height: var(--pixel-size);
+    background: var(--bg);
+    z-index:2;
+ }
+ 
+ .corner_topleft {
+    top: calc(var(--pixel-size) * -1);
+    left: calc(var(--pixel-size) * -1);
+ }
+ .corner_topright {
+    top: calc(var(--pixel-size) * -1);
+    right: calc(var(--pixel-size) * -1);
+ }
+ .corner_bottomleft {
+    bottom: calc(var(--pixel-size) * -1);
+    left: calc(var(--pixel-size) * -1);
+ }
+ .corner_bottomright {
+    bottom: calc(var(--pixel-size) * -1);
+    right: calc(var(--pixel-size) * -1);
+ }
+ 
+ .headline {
+    position: absolute;
+    top: (var(--pixel-size) * 2);
+    right: calc(var(--pixel-size) * 2);
+    width: calc(var(--pixel-size) * 75);
+    z-index: 2;
+ }

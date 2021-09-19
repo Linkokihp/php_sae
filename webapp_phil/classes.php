@@ -1,7 +1,7 @@
 <?php
 
     class user{
-        private $UserId, $UserName, $UserMail, $UserPassword, $UserNinja;
+        private $UserId, $UserName, $UserMail, $UserPassword, $UserNinja, $OnlineState;
 
         //GET/SET UserId
         public function getUserId() {
@@ -43,17 +43,43 @@
             $this->UserNinja=$UserNinja;
         }
 
+        //GET/SET OnlineState
+        public function getOnlineState() {
+            return $this->OnlineStaterNinja;
+        }
+        public function setOnlineState($OnlineState) {
+            $this->OnlineState=$OnlineState;
+        }
+
+        //Display OnlineUsers
+        public function displayOnlineUsers(){
+            include 'config.php';
+            $Onlinereq=$bdd->prepare("SELECT * FROM users WHERE OnlineState = 1");
+            $Onlinereq->execute(array(
+                'UserName' => $this-> getUserName()
+            ));
+
+                ?>
+                    <!-- start list of Onlineusers -->
+                    <li>
+                        <ul><?php echo($DataChat['ChatText']);?></ul>
+                    </li>
+                    <!--end list of Onlineusers-->
+                <?php
+        
+        }
+
+
         //Insert user into db
         public function insertUser() {
             include "config.php";
-            $req=$bdd->prepare("INSERT INTO users(UserName,UserMail,UserPassword) VALUES(:UserName, :UserMail, :UserPassword)");
+            $req=$bdd->prepare("INSERT INTO users(UserName,UserMail,UserPassword,UserNinja,OnlineState) VALUES(:UserName,:UserMail,:UserPassword,'default',0)");
 
             //Execute Data
             $req->execute(array(
                 'UserName'=>$this->getUserName(),
                 'UserMail'=>$this->getUserMail(),
                 'UserPassword'=>$this->getUserPassword()
-                //'UserNinja'=>$this->getUserNinja()
             ));
         }
 
@@ -61,11 +87,16 @@
         public function userLogin() {
             include "config.php";
             $req=$bdd->prepare("SELECT * FROM users WHERE UserMail=:UserMail AND UserPassword=:UserPassword");
+            $onlineState =$bdd->prepare("UPDATE users SET OnlineState= 1 WHERE UserMail=:UserMail");
 
             //Execute Data
             $req->execute(array(
                 'UserMail'=>$this->getUserMail(),
                 'UserPassword'=>$this->getUserPassword()
+            ));
+
+            $onlineState->execute(array(
+                'UserMail'=>$this->getUserMail()
             ));
 
             if($req->rowCount()==0) {
@@ -77,10 +108,19 @@
                     $this->setUserName($data['UserName']);
                     $this->setUserPassword($data['UserPassword']);
                     $this->setUserMail($data['UserMail']);
-                    header("Location:gameengine/app.php");
+                    header("Location:app/app.php");
                     return true;
                 }
             }
+        }
+
+        //User Logout onlineState
+        public function userLogout($userMail) {
+            include "config.php";
+            $onlineState =$bdd->prepare("UPDATE users SET OnlineState= 0 WHERE UserMail=:UserMail");
+            $onlineState->execute(array(
+                'UserMail'=> $userMail
+            ));
         }
 
         // escape value from form
