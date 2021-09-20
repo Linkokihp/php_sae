@@ -1,6 +1,5 @@
 <?php
-include 'classes.php';
-
-$chat = new chat();
-$chat->displayChatMessage();
+    include 'classes.php';
+    $chat = new chat();
+    $chat->displayChatMessage();
 ?>

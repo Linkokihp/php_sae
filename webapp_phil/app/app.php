@@ -7,9 +7,10 @@
     <title>Welcome to Ninjatt</title>
 </head>
 <?php
-  $session_laufzeit = 5*60;
+  $session_laufzeit = 1000*60;  //5*60
   $localtime = time();
   include "../classes.php";
+
 
   if( isset($_SESSION['isloggedin'])){
     if($_SESSION['isloggedin'] != true || ($_SESSION['login_timestamp'] + $session_laufzeit) < $localtime) {
@@ -34,14 +35,28 @@
     <a class="logout" href="<?php echo BASE_URL . '/logout.php'; ?>" class="btn btn-flat">Sign out</a>
 
     <!-- USER ONLINESTATE -->
-    <div class="onlineState">ONLINESTATUS</div>
+    <div class="onlineStateList">
+        <p>Online:</p>
+        <ul class="onlineState">
+        </ul>
+    </div>
+
+    <!-- NinjaOutfit -->
+    <div class="ninjaFit">
+        <p>Select your Ninjatt-Outfit</p>
+        <form id="ninjaFit" method="POST">
+                <input type="radio" name="outfit" value="default" /> Default
+                <input type="radio" name="outfit" value="red" /> Red
+                <button type="submit" name="saveRadio" class="outfitBtn btn btn-primary">Save Ninjatt-Fit</button>
+        </form>
+    </div>
 
     <!-- INFRAME STUFF -->
     <div class="frame animate__animated animate__flipInX">
         <div class="corner_topleft"></div>
         <div class="corner_topright"></div>
         <div class="corner_bottomleft"></div>
-        <div class="corner_bottomright"></div>    
+        <div class="corner_bottomright"></div>
         
 
         <p class="headline" xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 75 14" shape-rendering="crispEdges">Ninjatt</p>
@@ -52,13 +67,7 @@
         <div class="camera">
             <div class="map pixel-art">
                 <div class="character" facing="down" walking="true">
-                    <div class="username"><?php echo $_SESSION['UserName'];?></span></div>
-                    <div class="shadow pixel-art"></div>
-                    <!----------------------------------- OUT OF DB LATER ----------------------------------->
-                    <div style='background-image: url("src/chars/ninja-<?php echo("standard")?>.png");' class="character_spritesheet pixel-art"></div>
-                    <!-- start speech bubble -->
-                    <div class="chatMessages"></div>
-                    <!--end speech bubble-->
+                    <!-- From DB -->
                 </div>
             </div>
 

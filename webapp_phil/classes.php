@@ -45,7 +45,7 @@
 
         //GET/SET OnlineState
         public function getOnlineState() {
-            return $this->OnlineStaterNinja;
+            return $this->OnlineState;
         }
         public function setOnlineState($OnlineState) {
             $this->OnlineState=$OnlineState;
@@ -54,21 +54,45 @@
         //Display OnlineUsers
         public function displayOnlineUsers(){
             include 'config.php';
-            $Onlinereq=$bdd->prepare("SELECT * FROM users WHERE OnlineState = 1");
-            $Onlinereq->execute(array(
-                'UserName' => $this-> getUserName()
+            $Onlinereq=$bdd->prepare("SELECT * FROM Users Where 1");
+            $Onlinereq->execute();
+
+            while($Result = $Onlinereq->fetch()) {
+                if($Result['OnlineState'] == 1) {
+                ?>
+                    <li><i class="fas fa-user-ninja" style="color: green;"></i> <?php echo $Result['UserName'];?></li>
+                <?php }
+                }
+            }
+
+        //Display Character
+        public function displayCharacter(){
+            include 'config.php';
+            $Charreq=$bdd->prepare("SELECT * FROM users WHERE UserName=:UserName");
+            $Charreq->execute(array(
+                'UserName'=>$this->getUserName()
             ));
 
-                ?>
-                    <!-- start list of Onlineusers -->
-                    <li>
-                        <ul><?php echo($DataChat['ChatText']);?></ul>
-                    </li>
-                    <!--end list of Onlineusers-->
-                <?php
-        
+            $Result = $Charreq->fetch();
+            ?>
+            <div class="username"><?php echo $Result['UserName'];?></span></div>
+            <div class="shadow pixel-art"></div>
+            <div style='background-image: url("src/chars/ninja-<?php echo $Result['UserNinja'];?>.png");' class="character_spritesheet pixel-art"></div>
+            <div class="chatMessages"></div>
+            <?php    
         }
 
+        //Update Ninjafit
+        public function updateNinjafit() {
+            include "config.php";
+            $req =$bdd->prepare("UPDATE users SET UserNinja=:UserNinja WHERE UserName=:UserName");
+
+            //Execute Data
+            $req->execute(array(
+                'UserName'=>$this->getUserName(),
+                'UserNinja'=>$this->getUserNinja()
+            ));
+        }
 
         //Insert user into db
         public function insertUser() {

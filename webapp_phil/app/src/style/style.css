@@ -56,12 +56,29 @@
    font-size: 20px;
  }
 
- .onlineState {
+ .onlineStateList {
    position: absolute;
    left: 100px;
    top: 80px;
    font-size: 20px;
    color: white;
+ }
+
+ .onlineStateList ul {
+   list-style-type: none;
+ }
+
+ .ninjaFit {
+   position: absolute;
+   right: 100px;
+   top: 80px;
+   font-size: 20px;
+   color: white;
+ }
+
+ .ninjaFit form{
+   display: flex;
+   flex-direction: column;
  }
  
  .frame {
@@ -153,6 +170,7 @@
 	width:calc(100% - 24px);
    position: absolute;
    right: 5px;
+   	font-family: silkscreen;
 }
 
 #bub-part-a {
@@ -165,7 +183,6 @@
 #speech-txt {
 	width:calc(100% - 24px);
 	padding:6px;
-	font-family:silkscreen;
 	font-size:10px;
 	color:var(--Speech-Bubble-Text);
 	background:var(--Speech-Bubble-Background);

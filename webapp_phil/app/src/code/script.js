@@ -12,8 +12,6 @@ let speed = 1; //How fast the character moves in pixels per frame
 
 
 //Serverconnection
-const socket = io('http://localhost:3001');
-socket.on('init', handleInit);
 
 
 const placeCharacter = () => {
@@ -169,8 +167,6 @@ step(); //kick off the first step!
 
 //CHATFUNCTION--------------------------------------
 
-
-  
    //To send a Message to DB + Display MSG
    $(".chatText").keyup(function(e){
 
@@ -178,7 +174,6 @@ step(); //kick off the first step!
       if(e.keyCode == 13){
          e.preventDefault();
          let chatText = $('.chatText').val();
-
          $.ajax({
             type:'POST',
             url:'../insert_messages.php',
@@ -186,11 +181,10 @@ step(); //kick off the first step!
             success: async function(){
                $('.chatMessages').load('../display_messages.php')
                $('.chatText').val('')
-               
+
+               clearTimeout(delTimer);
                //Deletes Chatbubble after 5s
-               setTimeout(function(){
-                  $('.chatMessages').load('../delete_messages.php')
-               }, 5000);
+               delMsgTimer();
             }
          });
       }
@@ -205,15 +199,53 @@ step(); //kick off the first step!
    });
 
    //Interval function to Display ChatMessage
+   let delTimer;
+
    setInterval(function(){
       $('.chatMessages').load('../display_messages.php')
    },500);
 
    $('.chatMessages').load('../display_messages.php')
 
+   function delMsgTimer() {
+      delTimer = setTimeout( delMsg, 5000);
+    }
 
-   //TEST SOCKET.IO
-   function handleInit(msg) {
-      console.log(msg)
-   }
+   function delMsg() {
+      $('.chatMessages').load('../delete_messages.php')
+    }
+
+
+    
+//CHARACTERFUNCTION--------------------------------------
+
+   $(".outfitBtn").click(function(e){
+      e.preventDefault();
+      console.log('Clicked')
+      let ninjaFit = $('input[name=outfit]:checked', '#ninjaFit').val();
+      //When btn  get s clicked do:
+      $.ajax({
+         type:'POST',
+         url:'../update_ninjafit.php',
+         data:{ninjaFit:ninjaFit},
+         success: async function(){
+            $('.character').load('../display_character.php')
+         }
+      })
+   });
+
+   //Interval function to Display Onlineusers
+   setInterval(function(){
+      $('.onlineState').load('../display_onlineuser.php')
+   },5000);
+
+   $('.onlineState').load('../display_onlineuser.php')
+
+   //Interval function to Display Character
+   setInterval(function(){
+      $('.character').load('../display_character.php')
+   },5000);
+
+   $('.character').load('../display_character.php')
+
 });
