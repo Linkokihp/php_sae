@@ -1,5 +1,14 @@
 $(function(){
 
+let conn = new WebSocket('ws://localhost:8080');
+conn.onopen = function(e) {
+   console.log("Connection established blyad!!");
+};
+
+conn.onmessage = function(e) {
+    console.log(e.data);
+};
+
 let character = document.querySelector(".character");
 let username = document.querySelector(".username");
 let map = document.querySelector(".map");
@@ -178,12 +187,12 @@ step(); //kick off the first step!
             type:'POST',
             url:'../insert_messages.php',
             data:{chatText:chatText},
-            success: async function(){
+            success: function(){
                $('.chatMessages').load('../display_messages.php')
                $('.chatText').val('')
 
                clearTimeout(delTimer);
-               //Deletes Chatbubble after 5s
+               //Deletes Chatbubble after 4s
                delMsgTimer();
             }
          });
@@ -198,12 +207,12 @@ step(); //kick off the first step!
       }
    });
 
-   //Interval function to Display ChatMessage
+   //Interval function to Display/Delete ChatMessage
    let delTimer;
 
    setInterval(function(){
       $('.chatMessages').load('../display_messages.php')
-   },500);
+   },1000);
 
    $('.chatMessages').load('../display_messages.php')
 
@@ -217,7 +226,7 @@ step(); //kick off the first step!
 
 
     
-//CHARACTERFUNCTION--------------------------------------
+// //CHARACTER-FUNCTION--------------------------------------
 
    $(".outfitBtn").click(function(e){
       e.preventDefault();
@@ -228,7 +237,7 @@ step(); //kick off the first step!
          type:'POST',
          url:'../update_ninjafit.php',
          data:{ninjaFit:ninjaFit},
-         success: async function(){
+         success: function(){
             $('.character').load('../display_character.php')
          }
       })
@@ -241,11 +250,7 @@ step(); //kick off the first step!
 
    $('.onlineState').load('../display_onlineuser.php')
 
-   //Interval function to Display Character
-   setInterval(function(){
-      $('.character').load('../display_character.php')
-   },5000);
-
+   //Loads Character from Database
    $('.character').load('../display_character.php')
 
 });

@@ -1,7 +1,7 @@
 <?php
 
     class user{
-        private $UserId, $UserName, $UserMail, $UserPassword, $UserNinja, $OnlineState;
+        private $UserId, $UserName, $UserMail, $UserPassword, $UserNinja, $OnlineState, $X, $Y;
 
         //GET/SET UserId
         public function getUserId() {
@@ -49,6 +49,22 @@
         }
         public function setOnlineState($OnlineState) {
             $this->OnlineState=$OnlineState;
+        }
+
+        //GET/SET X-Position
+        public function getXPosition() {
+            return $this->X;
+        }
+        public function setXPosition($X) {
+            $this->X=$X;
+        }
+
+        //GET/SET Y-Position
+        public function getYPosition() {
+            return $this->Y;
+        }
+        public function setYPosition($Y) {
+            $this->Y=$Y;
         }
 
         //Display OnlineUsers
@@ -157,6 +173,10 @@
 
             return $val;
         }
+
+    // MOVEMENT AND POSITION ON MAP TO DISPLAY ALL THE USERS WHICH ARE ONLINE
+
+   
     }
 
 
@@ -202,8 +222,10 @@
         //Display ChatMessage
         public function displayChatMessage(){
             include 'config.php';
-            $ChatReq=$bdd->prepare("SELECT * FROM chat ORDER BY ChatId");
-            $ChatReq->execute();
+            $ChatReq=$bdd->prepare("SELECT * FROM chat WHERE ChatUserId=:ChatUserId");
+            $ChatReq->execute(array(
+                'ChatUserId' =>$this->getChatUserId()
+            ));
 
             while($DataChat = $ChatReq->fetch()){
                 $UserReq=$bdd->prepare("SELECT * FROM users WHERE UserId=:UserId");
@@ -212,7 +234,8 @@
                     'UserId' => $DataChat['ChatUserId']
                 ));
                 $DataUser = $UserReq->fetch();
-                ?>
+
+                    ?>
                     <!-- start speech bubble -->
                     <div id="speech-bubble">
                         <div id="bub-part-a"></div>
@@ -228,6 +251,7 @@
                     </div>
                     <!--end speech bubble-->
                 <?php
+
             }
         }
 
@@ -242,5 +266,7 @@
             ));
         }
     }
+
+
 
 ?>

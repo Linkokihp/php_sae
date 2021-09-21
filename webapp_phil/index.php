@@ -1,4 +1,5 @@
 <?php require_once('config.php') ?>
+<?php require __DIR__ . '/vendor/autoload.php'; ?>
 <?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
     <title>Welcome to Ninjatt</title>
 </head>

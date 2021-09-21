@@ -1,0 +1,65 @@
+body {
+    background-color: lightgrey;
+}
+
+h1 {
+    color: blue;
+}
+
+#p {
+    color:green;
+}
+
+.Table
+{
+    display: table;
+}
+
+.Title
+{
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Heading
+{
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Row
+{
+    display: table-row;
+}
+
+.Cell
+{
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Lateral_Derecho
+{
+    float: right;
+    color: black;
+    margin-top: -175px;
+}
+
+#borderimg1 { 
+    border: 10px solid transparent;
+    padding: 15px;
+    -webkit-border-image: url(border.png) 30 round; /* Safari 3.1-5 */
+    -o-border-image: url(border.png) 30 round; /* Opera 11-12.1 */
+    border-image: url(border.png) 30 round;
+    width: 800px;
+}
+
+a:hover {
+    background-color: yellow;
+}

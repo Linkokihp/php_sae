@@ -1,0 +1,77 @@
+
+onMessage function - This is the dooray through which all messages from the clients are recieved.
+
+Is it also the place where ultimately all the messages should go back out:
+
+	Lets describe it.
+
+	☐ it should recieve a message from the user.
+	☐ it should check if a round is ongoing and if the user should be part of it.
+	☐ it should pass the user into the GameProcessor.
+	☐ it should not return the result to the client - This cant happen until all results are in.
+	☐ it should return a message letting the client know his answer was recieved.
+	
+	Should implement GameProcessorInterface.
+
+		LowestAnswerGameProcessor:
+			☐ it should accept a client/answer.
+			☐ it should store these details.
+			☐ it should process these details and return a SplObjectStorage object with correct answers.
+
+		TieBreakerGameProcessor:
+			☐ it should accept 2 clients/answers only.
+			☐ it should return the one with the lowest time.
+
+	ProcessorProvider:
+		☐ It should return the correct game type that implements the GameProcessorInterface.
+		☐ It should only do that if a round should be in progress.
+	
+	RoundRunner - runs the round itself, triggers rounds etc:
+		☐ it should know when a round is going to start.
+		☐ it should know when a round is going to end.
+		☐ it should know if a new round should be started.
+
+RoundTimer - It wraps the loop object and provides api to trigger:
+		The round timer handles the timing of the app.
+		it should handle the countdown to a game start.
+		it should handle a rounds timing.
+
+
+	GameEngine - Started by the bootstrap code that the cron job loads:
+		✔ it should handle client opening a connection. @done (14-03-17 20:29)
+		✔ it should handle a client closing a connection. @done (14-03-17 20:29)
+		✔ it should be able to close a connection. @done (14-03-17 20:29)
+		✔ it should be the gateway for client messages. @done (14-03-17 20:29)
+		✔ it should be able to broadcast to all the clients. @done (14-03-17 20:29)
+		✔ it should inform clients of the game start time. @done (14-03-17 20:30)
+		☐ it should inform clients that a game is starting in 5 minutes.
+			for this I need to know when the game is starting.
+		☐ it should inform clients that a game is starting in 1 minute.
+		☐ it should tell the client that a game is starting in 5 seconds.
+		☐ it should create a RoundRunner and hand over all the currently connected clients.
+		☐ it should lockdown and not allow any new clients.
+		
+	Messages - Object that holds Constants all the messages sent back to the user:
+		☐ it should load them from a file to make it easier to change
+		☐ it should default to a workable set incase file is corrupted.
+
+
+--------------------------------------------------------------
+Each game will be a series of rounds.
+
+When a user arrives they will see the next available game time.
+Maybe we need a gameSceduler.
+Its job would be to start games. Clients would arrive. 
+It would tell them how long until the next game.
+
+Thoughts:
+When your dealing with event driven code things are very different, things don't stop, they wait, veriables keep there state. Its a program that runs, this means that memory leaks are more of a concern.
+
+Games will need to overlay. When a game is being played new players should connect into the next upcoming game not the current one. 
+
+I think its best to have each game as a separate process. Started by a cron job. On startup it will need to pull information about itself from the database. Prize info etc.
+
+
+
+
+

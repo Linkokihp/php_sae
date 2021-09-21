@@ -2,6 +2,7 @@
     session_start();
 ?>
 <?php require_once('../config.php') ?>
+<?php require '../vendor/autoload.php'; ?>
 <?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
     <link rel="stylesheet" href="src/style/style.css">
     <title>Welcome to Ninjatt</title>

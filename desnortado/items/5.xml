@@ -1,0 +1,10 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>5</id>
+	<nombre_clave>pierna</nombre_clave>
+	<descripcion>pierna_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>Left_Leg.png</img>
+	<icon>Left_Leg_Icon.png</icon>
+</item>
