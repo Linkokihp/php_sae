@@ -1,5 +1,7 @@
 $(function(){
 
+console.log('script1')
+//Serverconnection
 let conn = new WebSocket('ws://localhost:8080');
 conn.onopen = function(e) {
    console.log("Connection established blyad!!");
@@ -14,13 +16,10 @@ let username = document.querySelector(".username");
 let map = document.querySelector(".map");
 
 //start in the left corner of the map
-let x = 5;
+let x = 10;
 let y = 10;
 let held_directions = []; //State of which arrow keys we are holding down
 let speed = 1; //How fast the character moves in pixels per frame
-
-
-//Serverconnection
 
 
 const placeCharacter = () => {
@@ -117,7 +116,6 @@ document.addEventListener("keyup", (e) => {
       held_directions.splice(index, 1)
    }
 });
-
 
 
 /* Dpad functionality for mouse and touch */
@@ -246,11 +244,12 @@ step(); //kick off the first step!
    //Interval function to Display Onlineusers
    setInterval(function(){
       $('.onlineState').load('../display_onlineuser.php')
-   },5000);
+   },8000);
 
    $('.onlineState').load('../display_onlineuser.php')
 
    //Loads Character from Database
    $('.character').load('../display_character.php')
+
 
 });

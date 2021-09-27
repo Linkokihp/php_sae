@@ -1,6 +1,0 @@
-suites:
-  apes_suite:
-    namespace: Apes
-    src_path: src
-    spec_path: src
-    spec_prefix: spec

@@ -152,7 +152,7 @@
                     $this->setUserName($data['UserName']);
                     $this->setUserPassword($data['UserPassword']);
                     $this->setUserMail($data['UserMail']);
-                    header("Location:app/app.php");
+                    header("Location:public/game.php");
                     return true;
                 }
             }

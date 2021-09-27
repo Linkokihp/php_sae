@@ -97,16 +97,6 @@
     background: #61ddf7;
     position:relative;
  }
- 
- .map {
-    image-rendering: pixelated;
-    /* background-image: url("https://assets.codepen.io/21542/CameraDemoMap.png"); */
-    background: grey;
-    background-size: 100%;
-    width: calc(13 * var(--grid-cell));
-    height: calc(10 * var(--grid-cell));
-    position: relative;
- }
 
  .username {
     overflow:hidden;

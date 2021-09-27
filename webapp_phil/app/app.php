@@ -8,7 +8,7 @@
     <title>Welcome to Ninjatt</title>
 </head>
 <?php
-  $session_laufzeit = 1000*60;  //5*60
+  $session_laufzeit = 5*60;  //5*60
   $localtime = time();
   include "../classes.php";
 
@@ -70,6 +70,9 @@
                 <div class="character" facing="down" walking="true">
                     <!-- From DB -->
                 </div>
+                <div class="character2" facing="down" walking="true">
+                    <!-- From DB -->
+                </div>
             </div>
 
 
@@ -123,6 +126,6 @@
             </div>
         </div>
     </div>
-<script src="src/code/script.js"></script>
+    <script src="src/code/script.js"></script>
 </body>
 </html>
