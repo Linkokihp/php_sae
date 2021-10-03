@@ -241,15 +241,13 @@ step(); //kick off the first step!
       })
    });
 
+   //Loads Character from Database
+   $('.character').load('../display_character.php')
+
    //Interval function to Display Onlineusers
    setInterval(function(){
       $('.onlineState').load('../display_onlineuser.php')
    },8000);
 
    $('.onlineState').load('../display_onlineuser.php')
-
-   //Loads Character from Database
-   $('.character').load('../display_character.php')
-
-
 });
