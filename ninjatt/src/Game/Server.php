@@ -15,18 +15,12 @@ class Server implements WampServerInterface
     private $playerData = [];
 
     /**
-     * @var Monster
-     */
-    private $monster;
-
-    /**
      * @var ConnectionInterface[]
      */
     private $connections;
 
     public function __construct()
     {
-        $this->monster = new Monster();
         $this->connections = [];
     }
 
@@ -56,7 +50,7 @@ class Server implements WampServerInterface
     {
         switch ($topic->getId()) {
             case "synchronize":
-                $conn->callResult($id, ['players' => $this->playerData, 'monster' => $this->monster->toArray()]);
+                $conn->callResult($id, ['players' => $this->playerData]);
                 break;
             default:
                 $conn->callError($id, $topic, 'You are not allowed to make calls')->close();
@@ -83,14 +77,6 @@ class Server implements WampServerInterface
 
             case "char_move":
                 $this->playerData[$sessId]['lastMove'] = $event;
-                if ($this->monster->inCollisionWith($event['x'], $event['y'])) {
-                    $this->playerData[$sessId]['points']++;
-                    $this->monster = new Monster();
-                    foreach ($this->connections as $connection) {
-                        $connection->event('monster_add', $this->monster->toArray());
-                        $connection->event('add_point', ['id' => $event['id']]);
-                    }
-                }
                 break;
 
             case "char_msg":
