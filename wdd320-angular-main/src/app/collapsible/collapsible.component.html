@@ -1,0 +1,6 @@
+<header (click)="toggle()" class="header">
+  {{ title }}
+</header>
+<div class="content" *ngIf="open">
+  <ng-content></ng-content>
+</div>

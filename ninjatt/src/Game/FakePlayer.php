@@ -28,13 +28,8 @@ class FakePlayer implements WebSocketClientInterface
             'id' => $this->id,
             'x' => $this->x = random_int(10, 400),
             'y' => $this->y = random_int(10, 400),
-            'heroType' => 'hero'
+            'ninjaType' => 'ninja'
         ]);
-        $this->call('synchronize', [], function ($result) {
-            $this->monster = $result['monster'];
-            $this->ready = true;
-        });
-        $this->subscribe('monster_add');
     }
 
     public function move()
@@ -47,7 +42,7 @@ class FakePlayer implements WebSocketClientInterface
                 'id' => $this->id,
                 'x' => $this->x,
                 'y' => $this->y,
-                'heroType' => 'hero'
+                'ninjaType' => 'ninja'
             ]);
         }
     }

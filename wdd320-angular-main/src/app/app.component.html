@@ -1,0 +1,29 @@
+<app-collapsible title="Nested Collapsible Root">
+  <app-collapsible title="Nested Collapsible Level 2">
+    <app-collapsible title="Nested Collapsible Level 3">
+      <h2>I'm the content of a callapsible</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla hic facere provident dolorem, natus unde praesentium asperiores officiis eligendi placeat aperiam vel, deleniti distinctio, reprehenderit velit corrupti ea nobis impedit!</p>
+    </app-collapsible>
+  </app-collapsible>
+</app-collapsible>
+
+<app-collapsible title="Counter">
+  <app-counter (limitReached)="limitReached()"></app-counter>
+</app-collapsible>
+
+<app-collapsible title="List">
+  <app-list [items]="[{title: 'Item 1', done: true, id: '1'}]"></app-list>
+</app-collapsible>
+
+<app-collapsible title="Hello World">
+  <p class="hello" [class.even]="count % 2 === 0">{{ message }}</p>
+  <h1 [attr.my-custom-attribute]=" count "
+      [style.backgroundColor]=" 'rgb(' + count * 5 + ', 0, 0)' ">{{ count }}</h1>
+  <input type="text" [value]="count"
+                    [disabled]="count % 3 === 0"
+                    [type]="count % 5 === 0 ? 'checkbox' : 'text'"
+                    (keydown.enter)="reset()">
+  <div>
+    <button (click)="reset()" (mouseenter)="count = 100">Reset</button>
+  </div>
+</app-collapsible>

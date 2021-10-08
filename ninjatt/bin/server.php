@@ -19,7 +19,7 @@ $webServer = new Ratchet\Server\IoServer(
 );
 
 $loop->addPeriodicTimer(1, function () use ($gameServer) {
-    echo sprintf("Players: %s; Memory: %s MB\n", $gameServer->getPlayersCount(), round(memory_get_usage()/1024/1024, 4));
+    echo sprintf("Ninjas Online: %s; Memory: %s MB\n", $gameServer->getPlayersCount(), round(memory_get_usage()/1024/1024, 4));
 });
 
 $loop->run();

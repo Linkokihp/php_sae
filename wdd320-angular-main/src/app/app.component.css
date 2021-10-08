@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.hello {
+  text-transform: uppercase;
+}
+
+h1 {
+  color: red;
+}
+
+.even {
+  color: blue;
+}

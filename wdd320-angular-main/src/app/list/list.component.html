@@ -1,0 +1,18 @@
+<p *ngIf="totalItems > completedItems">
+  You have completed {{ completedItems }} of {{ totalItems }} items.
+</p>
+<p *ngIf="totalItems === completedItems">
+  Hurray! You are done for today!
+</p>
+<input type="text" #itemName (keydown.enter)="addItem(itemName)">
+<button (click)="addItem(itemName)">Add</button>
+<ol class="list">
+  <li *ngFor="let item of items" class="item">
+    <input type="checkbox"
+           #doneInput
+           [checked]="item.done"
+           (input)="updateItemDone(item, doneInput.checked)">
+    <span class="title" [class.done]="item.done">{{ item.title }}</span>
+    <button (click)="deleteItem(item)">🗑</button>
+  </li>
+</ol>

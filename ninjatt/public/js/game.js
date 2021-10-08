@@ -33,7 +33,8 @@
 	bgImage.src = "images/background.png";
 
 	var spritePaths = {
-		ninja: 'images/ninja-default.png'
+		ninja: 'images/ninja-default.png',
+		ninja: 'images/ninja-red.png'
 	};
 
 	const SPRITE_SIZE = 16;
@@ -117,9 +118,9 @@
 		type: function() {
 			return this._type;
 		},
-		setType: function(heroType) {
-			if(spriteCollection[heroType] !== undefined) {
-				this._type = heroType;
+		setType: function(ninjaType) {
+			if(spriteCollection[ninjaType] !== undefined) {
+				this._type = ninjaType;
 			}
 		},
 		y: function() {
@@ -281,7 +282,7 @@
 			conn.publish('char_move', myNinja.serialize(), true);
 		}
 
-		// console.log("left:  " + keysDown.left.state + ", " + keysDown.left.active + "\nright: " + keysDown.right.state + ", " + keysDown.right.active + "\nup:    " + keysDown.up.state + ", " + keysDown.up.active);
+		console.log("left:  " + keysDown.left.state + ", " + keysDown.left.active + "\nright: " + keysDown.right.state + ", " + keysDown.right.active + "\nup:    " + keysDown.up.state + ", " + keysDown.up.active);
 
 	};
 
@@ -289,7 +290,7 @@
 	// Draw everything
 	var render = function () {
 		if (bgReady) {
-			ctx.drawImage(bgImage, 0, 0);
+			ctx.drawImage(bgImage, -60, 0);
 		}
 
 		for(var i in ninjas) {
@@ -307,10 +308,10 @@
 	function renderNinja(ninja) {
 		// Size of Ninja
 		ctx.drawImage(ninja.sprite().image(), ninja.x(), ninja.y(), 90, 90);
-		// ctx.drawImage(ninja.sprite().image(), ninja.prototype.animation.frame * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, Math.floor(ninja.x), Math.floor(ninja.y), SPRITE_SIZE, SPRITE_SIZE);
+		// ctx.drawImage(ninja.sprite().image(), ninja.prototype * SPRITE_SIZE, 0, SPRITE_SIZE, SPRITE_SIZE, Math.floor(ninja.x), Math.floor(ninja.y), SPRITE_SIZE, SPRITE_SIZE);
 
 		// Size of Playername
-		ctx.fillText(ninja.playerName(), ninja.x(), ninja.y() + 50);
+		ctx.fillText(ninja.playerName(), ninja.x() + 5, ninja.y() + 110);
 		if(ninja.said() != '') {
 			ctx.fillText(ninja.said(), ninja.x() + (50 / 2), ninja.y() - 10);
 		}
@@ -491,9 +492,10 @@
 			},
 			{'skipSubprotocolCheck': true}
 		);
-	}
+	};
 
 $(function(){
+
 	$(".outfitBtn").click(function(e){
 		e.preventDefault();
 		let ninjaFit = $('input[name=outfit]:checked', '#ninjaFit').val();
@@ -508,14 +510,6 @@ $(function(){
 		   }
 		})
 	 });
-
-	 $(window).bind('unload', function(){
-		$.ajax({
-			type: 'get',
-			async: false,
-			url: '../logout.php'
-		});
-	});
   
 	 //Loads Character from Database
 	 $('.character').load('../display_character.php')
@@ -533,5 +527,4 @@ $(function(){
 			$('#message').val($('#message').val()+' ')
 		}
 	}, false);
-
 });

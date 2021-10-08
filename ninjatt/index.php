@@ -3,11 +3,12 @@
 <?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
     <title>Welcome to Ninjatt</title>
 </head>
-<?php
-	if (isset($_SESSION['logoutmessage'])) {
-		echo '<script type="text/javascript">alert("' . $_SESSION['logoutmessage'] . '");</script>';
-		unset($_SESSION['logoutmessage']);
-	}
+<?php 
+    if (isset($_SESSION['logoutmessage'])) {
+        echo '<script type="text/javascript">alert("' . $_SESSION['logoutmessage'] . '");</script>';
+        unset($_SESSION['logoutmessage']);
+        session_destroy();
+    }
 ?>
 <body>
     <div id=LoginDiv></div>

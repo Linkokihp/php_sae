@@ -70,7 +70,6 @@ class Server implements WampServerInterface
 
             case "char_add":
                 $this->playerData[$sessId] = [
-                    'points' => 0,
                     'lastMove' => null
                 ];
                 break;
@@ -81,8 +80,8 @@ class Server implements WampServerInterface
 
             case "char_msg":
                 if ($event['msg'][0] == "/") {
-                    $event['heroType'] = substr($event['msg'], 1);
-                    $this->playerData[$sessId]['lastMove']['heroType'] = $event['heroType'];
+                    $event['ninjaType'] = substr($event['msg'], 1);
+                    $this->playerData[$sessId]['lastMove']['ninjaType'] = $event['ninjaType'];
                     $event['msg'] = "";
                     break;
                 }

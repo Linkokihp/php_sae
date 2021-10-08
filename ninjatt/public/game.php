@@ -1,7 +1,3 @@
-<?php
-	// session_set_cookie_params(0);
-    session_start();
-?>
 <?php require_once('../config.php') ?>
 <?php require '../vendor/autoload.php'; ?>
 <?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
@@ -10,31 +6,24 @@
 		<link rel="stylesheet" href="style/style.css">
 	</head>
 <?php
-	$session_laufzeit = 5*60;  //5*60
+	$session_laufzeit = 500*60;  //5*60 5 Minutes
 	$localtime = time();
 	include "../classes.php";
 
-
 	if( isset($_SESSION['isloggedin'])){
-	if($_SESSION['isloggedin'] != true || ($_SESSION['login_timestamp'] + $session_laufzeit) < $localtime) {
-		$user = new user();
-		$user->userLogout($_SESSION['UserMail']);
-		echo '<script>alert("Your session has been expired! Please login again!")</script>';
-		$_SESSION['logoutmessage'] = "Your session has been expired! Please login again!";
+		if($_SESSION['isloggedin'] != true || ($_SESSION['login_timestamp'] + $session_laufzeit) < $localtime) {
+			$user = new user();
+			$user->userLogout($_SESSION['UserMail']);
+			header('location: ../logout.php');
+			exit;
+		};
+	}	else{
+		$_SESSION['logoutmessage'] = "You must login first Ninja!!";
 		header('location: ../index.php');
-		header('location: ../logout.php');
 		exit;
 	};
-	}	else{
-		echo '<script>alert("Your session has been expired! Please login again!")</script>';
-		$_SESSION['logoutmessage'] = "Your session has been expired! Please login again!";
-		$user = new user();
-		$user->userLogout($_SESSION['UserMail']);
-		header('location: ../index.php');
-		header('location: ../logout.php');
-		exit;
-};
 ?>
+
 	<body onload="startTheGame()">
 
 		<div class='welcome_msg'><h2>Welcome <span id="playerName"><?php echo $_SESSION['UserName']?></span> to Phil's Ninjatt</h2></div>
@@ -83,4 +72,5 @@
 		<script src="js/autobahn.min.js"></script>
 		<script src="js/game.js"></script>
 	</body>
+	
 </html>
