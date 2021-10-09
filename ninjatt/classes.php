@@ -152,7 +152,7 @@
                     $this->setUserName($data['UserName']);
                     $this->setUserPassword($data['UserPassword']);
                     $this->setUserMail($data['UserMail']);
-                    header("Location:public/game.php");
+                    header("Location:../game.php");
                     return true;
                 }
             }
@@ -177,10 +177,6 @@
 
             return $val;
         }
-
-    // MOVEMENT AND POSITION ON MAP TO DISPLAY ALL THE USERS WHICH ARE ONLINE
-
-   
     }
 
 

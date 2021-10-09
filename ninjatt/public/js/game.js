@@ -17,12 +17,13 @@
 	let canvas = document.createElement("canvas");
 	let buffer = document.createElement("canvas").getContext("2d");
 	let ctx = canvas.getContext("2d");
-	canvas.width = 800;
-	canvas.height = 600;
+	canvas.width = 750;
+	canvas.height = 550;
 	document.getElementById("game").appendChild(canvas);
 
-	ctx.font="20px Georgia";
+	ctx.font="12px pp2";
 	ctx.fillStyle = "white";
+	
 
 	// Background image
 	var bgReady = false;
@@ -34,7 +35,6 @@
 
 	var spritePaths = {
 		ninja: 'images/ninja-default.png',
-		ninja: 'images/ninja-red.png'
 	};
 
 	const SPRITE_SIZE = 16;
@@ -290,7 +290,7 @@
 	// Draw everything
 	var render = function () {
 		if (bgReady) {
-			ctx.drawImage(bgImage, -60, 0);
+			ctx.drawImage(bgImage, 0, 0, 750, 550);
 		}
 
 		for(var i in ninjas) {
@@ -315,6 +315,7 @@
 		if(ninja.said() != '') {
 			ctx.fillText(ninja.said(), ninja.x() + (50 / 2), ninja.y() - 10);
 		}
+		
 	};
 
 
@@ -503,23 +504,20 @@ $(function(){
 		//When btn  get s clicked do:
 		$.ajax({
 		   type:'POST',
-		   url:'../update_ninjafit.php',
+		   url:'../functions/update_ninjafit.php',
 		   data:{ninjaFit:ninjaFit},
 		   success: function(){
-			  $('.character').load('../display_character.php')
 		   }
 		})
 	 });
   
-	 //Loads Character from Database
-	 $('.character').load('../display_character.php')
-  
+
 	 //Interval function to Display Onlineusers
 	 setInterval(function(){
-		$('.onlineState').load('../display_onlineuser.php')
-	 },8000);
+		$('.onlineState').load('functions/display_onlineuser.php')
+	 },10000);
   
-	 $('.onlineState').load('../display_onlineuser.php')
+	 $('.onlineState').load('functions/display_onlineuser.php')
 
 	addEventListener("keydown", function (e) {
 		keysDown[e.keyCode] = true;

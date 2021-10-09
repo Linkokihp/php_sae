@@ -1,6 +1,8 @@
 <?php require_once('config.php') ?>
 <?php require __DIR__ . '/vendor/autoload.php'; ?>
 <?php require_once(ROOT_PATH . '/includes/head_section.php') ?>
+    <link rel="stylesheet" href="public/style/style.css">
+    <link href="public/style/dist/rpgui.css" rel="stylesheet" type="text/css" >
     <title>Welcome to Ninjatt</title>
 </head>
 <?php 
@@ -10,9 +12,9 @@
         session_destroy();
     }
 ?>
-<body>
-    <div id=LoginDiv></div>
-        <form id="form1" method="post" action="user_login.php">
+<body class="index rpgui-content">
+    <div class="formDiv rpgui-container framed-grey animate__animated animate__fadeInDown">
+        <form id="loginForm" method="post" action="public/functions/user_login.php">
             <h2>Login for Ninjatt</h2>
             <table>
                 <tr>
@@ -34,7 +36,9 @@
                     }
                 ?>
             </table>
-            <h4><a href="sign_up.php">Not a Ninjatter yet? Sign up!</a></h4>
+            <h4><a href="public/sign_up.php">Not a Ninjatter yet? Sign up!</a></h4>
         </form>
+    </div>
+    <script src="public/style/dist/rpgui.js"></script>
 </body>
 </html>
